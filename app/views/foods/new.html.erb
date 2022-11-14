@@ -1,0 +1,6 @@
+<%= bootstrap_form_with model: @food do |f| %>
+  <%= f.text_field :name %>
+  <%= f.text_field :measurement_unit %>
+  <%= f.number_field :price %>
+  <%= f.submit "Add Food" %>
+<% end %>

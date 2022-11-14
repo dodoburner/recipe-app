@@ -67,3 +67,5 @@ group :development do
 end
 
 gem 'devise'
+gem 'bootstrap', '~> 5.2.2'
+gem "bootstrap_form", "~> 5.1"

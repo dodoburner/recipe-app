@@ -3,6 +3,10 @@ class FoodsController < ApplicationController
     @foods = Food.all
   end
 
+  def new
+    @food = Food.new
+  end
+
   def create
     @food = Food.create(food_params)
     if @food.save
