@@ -8,12 +8,14 @@ class FoodsController < ApplicationController
   end
 
   def create
-    @food = Food.create(food_params)
+    @food = Food.new(food_params)
+    
     if @food.save
       flash[:success] = 'Food added successfully'
       redirect_to foods_path
     else
       flash.now[:error] = 'Error: Food could not be added'
+      redirect_to new_food_path
     end
   end
 
