@@ -1,0 +1,8 @@
+<h1>List of Inventories</h1>
+<% @inventories.each do |inventory| %>
+  <div>
+  <h3><%= inventory.name %></h3>
+  <p><%= inventory.description %></p>
+  </div>
+<% end %>
+
