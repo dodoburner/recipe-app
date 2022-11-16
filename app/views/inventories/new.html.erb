@@ -1,2 +1,11 @@
-<h1>Inventories#new</h1>
-<p>Find me in app/views/inventories/new.html.erb</p>
+
+<%= form_with model: @inventory, url: user_inventories_url do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br><br>
+
+    <%= f.label :description %>
+    <%= f.text_area :description %><br>
+    <%= f.submit "Add Inventory" %>
+<% end %>
+
+

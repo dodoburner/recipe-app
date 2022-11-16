@@ -1,8 +1,26 @@
-<h1>List of Inventories</h1>
-<% @inventories.each do |inventory| %>
-  <div>
-  <h3><%= inventory.name %></h3>
-  <p><%= inventory.description %></p>
-  </div>
-<% end %>
+<div class='p-5'>
+  <%= link_to 'Add Inventory', inventories_new_path, class:'btn btn-primary float-end mb-5' %> 
 
+  <table class='table table-striped table-light'>
+    <thead>
+        <tr>
+        <th>Inventory</th>
+        <th>Measurement unit</th>
+        <th>Unit price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody class='table-group-divider'>
+      <% @inventories.each do |inventory| %>
+        <tr>
+          <td><%= inventory.name %></td>
+          <td><%= inventory.measurement_unit %></td>
+          <td>$<%= inventory.price %></td>
+          <td><%= link_to 'Delete', inventory_path(id: inventory.id), data: { turbo_method: :delete } %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
