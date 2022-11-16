@@ -1,2 +1,9 @@
-<h1>Inventories#show</h1>
-<p>Find me in app/views/inventories/show.html.erb</p>
+<div>
+  <h1><%= @inventory.name%></h1>
+  <h2><%= link_to 'REMOVE', inventory_path(@inventory), data: {
+    confirm: 'Are you sure you want to remove: #{@recipe.name}?',
+    }, method: :delete %><h2>
+  <p><%= @inventory.description%></p>
+</div>
+
+
