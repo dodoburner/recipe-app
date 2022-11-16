@@ -1,6 +1,6 @@
 <h1>Create a new recipe</h1>
-<div class="recipe-form-container"
-    <%= bootstrap_form_with model: @recipe, url:user_recipes_path(@current_user, @recipe), scope: :recipe do |form| %>
+<div class="recipe-form-container">
+    <%= bootstrap_form_with(model: [ @current_user, @recipe ]) do |form| %>
         <%= form.alert_message "Please fix the errors below." %>
         <%= form.text_field :name, required: true %> 
         <%= form.text_field :preparation_time, required: true %>
@@ -10,5 +10,3 @@
         <%= form.submit "Create recipe" %>
     <% end %>
 </div>
-
-# # create some recipes with a lot of description content
