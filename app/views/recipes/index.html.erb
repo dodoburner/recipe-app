@@ -1,13 +1,41 @@
 <h1> List of recipes </h1>
 
+<div class="container">
+<table class="table table-striped table-hover table-primary">
+<thead>
+    <tr>
+        <th>Name</th>
+        <th>Preparation time</th>
+        <th>Cooking time</th>
+        <th>Description</th>
+        <th>Public</th>
+        <th>Actions</th>
+    </tr>
+</thead>
+<tbody>
 <% if @recipes.empty? %>
-    <p>There are no recipes</p>
-<% else %> 
-    <ul>
-        <% @recipes.each do |recipe| %>
-            <li>
-                <%= link_to recipe.name, user_recipe_path(recipe.user, recipe) %>
-            </li>
-        <% end %>
-    </ul>
+    <tr>
+        <td colspan="6">No recipes found</td>
+    </tr>
+<% else %>
+    <% @recipes.each do |recipe| %>
+        <tr>
+            <td><%= recipe.name %></td>
+            <td><%= recipe.preparation_time %></td>
+            <td><%= recipe.cooking_time %></td>
+            <td><%= recipe.description[0..99] %></td>
+            <td><%= recipe.public %></td>
+            <td>
+                <%= link_to 'Show', user_recipe_path(recipe.user, recipe)%>
+                <%= link_to 'Delete', user_recipe_path(recipe.user, recipe), data: { turbo_method: :delete } %>
+            </td>
+        </tr>
+    <% end %>
 <% end %>
+</tbody>
+</table>
+
+<%= link_to 'New recipe', new_user_recipe_path %>
+
+<%= link_to 'Back', user_path(current_user) %>
+</div>

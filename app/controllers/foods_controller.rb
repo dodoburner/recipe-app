@@ -9,7 +9,7 @@ class FoodsController < ApplicationController
 
   def create
     @food = Food.new(food_params)
-    
+
     if @food.save
       flash[:success] = 'Food added successfully'
       redirect_to foods_path
