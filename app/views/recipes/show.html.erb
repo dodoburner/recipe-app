@@ -45,7 +45,7 @@
           <td><%= rf.food.name %></td>
           <td><%= rf.quantity %> <%= rf.food.measurement_unit %></td>
           <td>$<%= rf.food.price %></td>
-          <td><%= link_to 'Delete', food_path(id: rf.food.id), data: { turbo_method: :delete } %> </td>
+          <td><%= link_to 'Delete', recipe_food_path(@recipe, rf.food), data: { turbo_method: :delete } %> </td>
         </tr>
       <% end %>
     </tbody>

@@ -8,9 +8,7 @@ Rails.application.routes.draw do
   root 'recipes#public'
   get '/public_recipes', to: 'recipes#public'
 
-  resources :users
-  resources :foods
   resources :recipes do
-    resources :foods
+    resources :foods, only: [:new, :create, :destroy]
   end
 end
