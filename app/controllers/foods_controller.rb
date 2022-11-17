@@ -1,8 +1,4 @@
 class FoodsController < ApplicationController
-  def index
-    @foods = Food.all
-  end
-
   def new
     @food = Food.new
     @recipe = Recipe.find(params['recipe_id'])
@@ -25,7 +21,7 @@ class FoodsController < ApplicationController
   end
 
   def destroy
-    Food.find(params[:id]).delete
+    Food.find(params[:id]).destroy
     redirect_to foods_path
   end
 
