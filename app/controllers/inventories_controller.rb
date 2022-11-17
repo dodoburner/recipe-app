@@ -5,6 +5,7 @@ class InventoriesController < ApplicationController
 
   def show
     @inventory = Inventory.find(params[:id])
+    @inventory_foods = InventoryFood.includes(:food).all.where(inventory_id: @inventory)
   end
 
   def new
@@ -17,16 +18,16 @@ class InventoriesController < ApplicationController
 
     if @inventory.save
       flash[:success] = 'Inventory added successfully'
-      redirect_to user_inventories_path
+      redirect_to inventories_path
     else
       flash.now[:error] = 'Error: Inventory could not be added'
-      redirect_to new_user_inventory_path
+      redirect_to new_inventory_path
     end
   end
 
   def destroy
     Inventory.find(params[:id]).delete
-    redirect_to user_inventories_path
+    redirect_to inventories_path
   end
 
   private
