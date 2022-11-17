@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'users#index'
   resources :users do
-    resources :inventories do
-    end
+    resources :inventories
   end
 end
