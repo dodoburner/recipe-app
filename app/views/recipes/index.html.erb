@@ -1,0 +1,34 @@
+<h1> List of recipes </h1>
+
+<div class="container">
+
+<% if @recipes.empty? %>
+    <div class="alert alert-info">
+        <strong> No recipes found </strong>
+    </div>
+<% else %>
+    <% @recipes.each do |recipe| %>
+        <div class="bg-secondary card mb-4 w-75 mx-auto">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 d-flex flex-column align-items-center justify-content-between">
+                        <h3 class=""><%= link_to recipe.name, user_recipe_path(recipe.user, recipe), class: "text-decoration-none text-primary" %></h3>
+                        <%= link_to 'Remove', user_recipe_path(recipe.user, recipe), data: { turbo_method: :delete }, class: 'btn btn-danger' %>
+                    </div>
+                    <div class="col-md-8">
+                        <p class="card-text"><%= recipe.description %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% end %>
+<% end %>
+
+<div class="mb-5 text-center">
+    <%= link_to 'New recipe', new_user_recipe_path(current_user), class: 'btn btn-primary' %>
+</div>
+
+</div>
+
+
+

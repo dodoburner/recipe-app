@@ -1,0 +1,7 @@
+<% @users.each do |user| %>
+    <h1><%= user.name %></h1>
+    <p><%= user.email %></p>
+<% end %>
+
+
+<%= link_to 'Sign Out', destroy_user_session_path, class: 'btn btn-danger', data: { turbo_method: :delete } %> 

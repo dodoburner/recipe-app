@@ -25,4 +25,11 @@ Rails.application.routes.draw do
   # resources :users
   #   resources :inventories
   # end
+  root 'users#index'
+  get '/public_recipes', to: 'recipes#public'
+
+  resources :users do
+    resources :foods
+    resources :recipes
+  end
 end

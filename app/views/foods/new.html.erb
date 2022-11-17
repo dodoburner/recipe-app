@@ -1,6 +1,8 @@
-<%= bootstrap_form_with model: @food do |f| %>
-  <%= f.text_field :name %>
-  <%= f.text_field :measurement_unit %>
-  <%= f.number_field :price %>
-  <%= f.submit "Add Food" %>
-<% end %>
+<div class='d-flex justify-content-center align-items-center'>
+  <%= bootstrap_form_with model: @food, class:'w-25' do |f| %>
+    <%= f.text_field :name %>
+    <%= f.select :measurement_unit, [["grams", 1], ["kilos", 2], ["liters", 2], ["milliliters", 2]] %>
+    <%= f.number_field :price, label: 'Price $' %>
+    <%= f.submit "Add Food" %>
+  <% end %>
+</div>

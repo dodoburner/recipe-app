@@ -15,3 +15,19 @@
  */
 @import "bootstrap";
 @import "rails_bootstrap_forms";
+@import "https://bootswatch.com/5/sketchy/bootstrap.min.css";
+
+h1 {
+  text-align: center;
+  margin: 20px;
+}
+
+.recipe-form-container {
+  margin: 0 auto;
+  width: 60%;
+}
+
+label.required::after {
+  content: " *";
+  color: red;
+}
