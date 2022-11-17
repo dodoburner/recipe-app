@@ -4,7 +4,7 @@ class Recipe < ApplicationRecord
 
   def count_total_price
     total = 0
-    self.recipe_foods.each do |rf|
+    recipe_foods.each do |rf|
       food = Food.find(rf.food_id)
       total += food.price
     end
@@ -12,6 +12,6 @@ class Recipe < ApplicationRecord
   end
 
   def count_total_food_items
-    self.recipe_foods.sum('quantity')
+    recipe_foods.sum('quantity')
   end
 end
