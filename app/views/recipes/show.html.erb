@@ -21,7 +21,7 @@
                 Generate shopping list
             </button>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ingredientsModal">
-                <%= link_to 'Add ingredient', new_food_path(recipe_id: @recipe.id) %>
+                <%= link_to 'Add ingredient', new_recipe_food_path(@recipe) %>
             </button>
         </div>
     <hr>
@@ -40,12 +40,12 @@
     </thead>
 
     <tbody class='table-group-divider'>
-      <% @foods.each do |food| %>
+      <% @recipe_foods.each do |rf| %>
         <tr>
-          <td><%= food.name %></td>
-          <td><%= food.measurement_unit %></td>
-          <td>$<%= food.price %></td>
-          <td><%= link_to 'Delete', food_path(id: food.id), data: { turbo_method: :delete } %> </td>
+          <td><%= rf.food.name %></td>
+          <td><%= rf.food.measurement_unit %></td>
+          <td>$<%= rf.food.price %></td>
+          <td><%= link_to 'Delete', food_path(id: rf.food.id), data: { turbo_method: :delete } %> </td>
         </tr>
       <% end %>
     </tbody>

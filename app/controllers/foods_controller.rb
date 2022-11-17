@@ -5,19 +5,22 @@ class FoodsController < ApplicationController
 
   def new
     @food = Food.new
+    @recipe = Recipe.find(params['recipe_id'])
   end
 
   def create
     @food = Food.new(food_params)
-    @recipe = Recipe.find(params[:recipe_id])
-    @recipe.recipe_foods.append(@food)
+    @recipe = Recipe.find(params['recipe_id'])
+    @recipe_food = RecipeFood.new
+    @recipe_food.recipe = @recipe
+    @recipe_food.food = @food
 
-    if @food.save
+    if @food.save && @recipe_food.save
       flash[:success] = 'Food added successfully'
-      redirect_to foods_path
+      redirect_to recipe_path(@recipe)
     else
       flash.now[:error] = 'Error: Food could not be added'
-      redirect_to new_food_path
+      redirect_to new_recipe_food_path
     end
   end
 
