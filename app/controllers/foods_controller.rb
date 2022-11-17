@@ -9,6 +9,8 @@ class FoodsController < ApplicationController
 
   def create
     @food = Food.new(food_params)
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe.recipe_foods.append(@food)
 
     if @food.save
       flash[:success] = 'Food added successfully'
