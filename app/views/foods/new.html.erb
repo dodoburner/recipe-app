@@ -1,8 +1,9 @@
 <div class='d-flex justify-content-center align-items-center'>
   <%= bootstrap_form_with(model: [@recipe, @food]) do |f| %>
     <%= f.text_field :name %>
-    <%= f.select :measurement_unit, [["grams", 1], ["kilos", 2], ["liters", 2], ["milliliters", 2]] %>
+    <%= f.select :measurement_unit, [["grams"], ["kilos"], ["liters"], ["milliliters"]] %>
     <%= f.number_field :price, label: 'Price $' %>
+    <%= f.number_field :quantity %>
     <%= f.submit "Add Food" %>
   <% end %>
 </div>
