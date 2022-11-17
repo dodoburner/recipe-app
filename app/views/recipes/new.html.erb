@@ -1,6 +1,6 @@
 <h1>Create a new recipe</h1>
 <div class="recipe-form-container">
-    <%= bootstrap_form_with(model: [ @current_user, @recipe ]) do |form| %>
+    <%= bootstrap_form_with model: @recipe do |form| %>
         <%= form.alert_message "Please fix the errors below." %>
         <%= form.text_field :name, required: true %> 
         <%= form.text_field :preparation_time, required: true %>

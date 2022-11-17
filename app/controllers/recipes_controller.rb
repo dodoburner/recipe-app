@@ -13,7 +13,7 @@ class RecipesController < ApplicationController
     if @recipe.save
       puts 'Recipe was successfully created'
       flash[:notice] = 'Recipe was successfully created'
-      redirect_to user_recipes_path
+      redirect_to recipes_path
     else
       flash[:alert] = 'Recipe was not created'
       render 'new'
@@ -33,7 +33,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
     flash[:notice] = 'Recipe was successfully deleted'
-    redirect_to user_recipes_path
+    redirect_to recipes_path
   end
 
   def public

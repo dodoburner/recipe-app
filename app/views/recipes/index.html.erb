@@ -12,8 +12,8 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-4 d-flex flex-column align-items-center justify-content-between">
-                        <h3 class=""><%= link_to recipe.name, user_recipe_path(recipe.user, recipe), class: "text-decoration-none text-primary" %></h3>
-                        <%= link_to 'Remove', user_recipe_path(recipe.user, recipe), data: { turbo_method: :delete }, class: 'btn btn-danger' %>
+                        <h3 class=""><%= link_to recipe.name, recipe_path(recipe), class: "text-decoration-none text-primary" %></h3>
+                        <%= link_to 'Remove', recipe_path(recipe), data: { turbo_method: :delete }, class: 'btn btn-danger' %>
                     </div>
                     <div class="col-md-8">
                         <p class="card-text"><%= recipe.description %></p>
@@ -25,7 +25,7 @@
 <% end %>
 
 <div class="mb-5 text-center">
-    <%= link_to 'New recipe', new_user_recipe_path(current_user), class: 'btn btn-primary' %>
+    <%= link_to 'New recipe', new_recipe_path, class: 'btn btn-primary' %>
 </div>
 
 </div>
