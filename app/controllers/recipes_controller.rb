@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.where(user_id: current_user.id)
   end
 
   def create
@@ -34,6 +34,10 @@ class RecipesController < ApplicationController
     @recipe.destroy
     flash[:notice] = 'Recipe was successfully deleted'
     redirect_to user_recipes_path
+  end
+
+  def public
+    @recipes = Recipe.where(public: true).order('created_at DESC')
   end
 
   private
