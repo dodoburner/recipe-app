@@ -1,41 +1,34 @@
 <h1> List of recipes </h1>
 
 <div class="container">
-<table class="table table-striped table-hover table-primary">
-<thead>
-    <tr>
-        <th>Name</th>
-        <th>Preparation time</th>
-        <th>Cooking time</th>
-        <th>Description</th>
-        <th>Public</th>
-        <th>Actions</th>
-    </tr>
-</thead>
-<tbody>
+
 <% if @recipes.empty? %>
-    <tr>
-        <td colspan="6">No recipes found</td>
-    </tr>
+    <div class="alert alert-info">
+        <strong> No recipes found </strong>
+    </div>
 <% else %>
     <% @recipes.each do |recipe| %>
-        <tr>
-            <td><%= recipe.name %></td>
-            <td><%= recipe.preparation_time %></td>
-            <td><%= recipe.cooking_time %></td>
-            <td><%= recipe.description[0..99] %></td>
-            <td><%= recipe.public %></td>
-            <td>
-                <%= link_to 'Show', user_recipe_path(recipe.user, recipe)%>
-                <%= link_to 'Delete', user_recipe_path(recipe.user, recipe), data: { turbo_method: :delete } %>
-            </td>
-        </tr>
+        <div class="bg-secondary card mb-4 w-75 mx-auto">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 d-flex flex-column align-items-center justify-content-between">
+                        <h3 class=""><%= link_to recipe.name, user_recipe_path(recipe.user, recipe), class: "text-decoration-none text-primary" %></h3>
+                        <%= link_to 'Remove', user_recipe_path(recipe.user, recipe), data: { turbo_method: :delete }, class: 'btn btn-danger' %>
+                    </div>
+                    <div class="col-md-8">
+                        <p class="card-text"><%= recipe.description %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     <% end %>
 <% end %>
-</tbody>
-</table>
 
-<%= link_to 'New recipe', new_user_recipe_path %>
-
-<%= link_to 'Back', user_path(current_user) %>
+<div class="mb-5 text-center">
+    <%= link_to 'New recipe', new_user_recipe_path(current_user), class: 'btn btn-primary' %>
 </div>
+
+</div>
+
+
+

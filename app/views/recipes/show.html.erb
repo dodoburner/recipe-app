@@ -1,34 +1,31 @@
-
-<h1> <%= @recipe.name %> </h1>
-<div class="container">
-<div class="row">
-    <div class="col">
-        <p class="fs-4"><span class="fs-3">Preparation time</span>: <%= @recipe.preparation_time %></p>
-        <p class="fs-4"><span class="fs-3">Cooking time:</span> <%= @recipe.cooking_time %></p>
-        <p class="fs-4"><span class="fs-3">Description: </span><%= @recipe.description %></p>
-    </div>
-    <div class="col">
-        <span class="fs-2">Public:</span>
-        <label class="switch">
-        <input type="checkbox" <%= @recipe.public ? "checked" : "" %>>
-        <span class="slider round"></span>
-        </label>
-    </div>
+<div class="card mb-4 w-75 mx-auto bg-secondary">
+    <div class="card-header text-center"> <h3> <strong> <%= @recipe.name %> </strong> </h3> </div>
+    <div class="card-body bg-secondary">
+        <div class="row">
+            <div class="col-md-8">
+                <ul class="list-group bg-secondary">
+                    <li class="list-group-item"><b>Preparation time:</b> <%= @recipe.preparation_time %></li>
+                    <li class="list-group-item"><b>Cooking time:</b> <%= @recipe.cooking_time %></li>
+                </ul>
+                <p class="my-3"> Steps to follow: </p>
+            </div>
+            <div class="col-md-4">
+                <div class="form-check form-switch fs-3">
+                    <label class="form-check-label" for="flexSwitchCheckChecked">Public</label>
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" <%= @recipe.public ? 'checked' : '' %>>
+                </div>
+             </div>
+        </div>
+        <div class="d-flex justify-content-between">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#shoppingListModal">
+                Generate shopping list
+            </button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ingredientsModal">
+                Add ingredient
+            </button>
+        </div>
+    <hr>
 </div>
-
-<div class="row">
-    <div class="col">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#shoppingListModal">
-            Generate shopping list
-        </button>
-    </div>
-    <div class="col">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ingredientsModal">
-            Add ingredient
-        </button>
-    </div>
-</div>
-<hr>
 
 <%= link_to 'Back', user_recipes_path %>
 </div>
