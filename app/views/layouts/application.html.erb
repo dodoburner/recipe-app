@@ -5,15 +5,17 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    
+    <link rel="stylesheet" media="all" href="https://bootswatch.com/5/quartz/bootstrap.min.css" />
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
     <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    
+    <% if alert %>
+      <p class="alert"><%= alert %></p>
+    <% end %>
     <%= yield %>
   </body>
 </html>
