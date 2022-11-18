@@ -1,19 +1,30 @@
+<h1 class="text-center text-primary py-2"> List of inventories </h1>
 
-<%= link_to 'Add Inventory', new_inventory_path, class:'btn btn-primary float-end mb-5' %>
-<div>
-  <% @inventories.each do |inventory| %>
-  <div class='d-flex flex-row justify-content-start m-5 border border-secondary'>
-    <ul class='list-group d-flex flex-column'>
-      <li class='list-group-item border-0 h4'>
-      <%= link_to inventory_path(inventory), class: "btn btn-success" do  %>
-      <%= inventory.name %>
+<div class="container">
+  <% if @inventories.empty? %>
+      <div class="alert alert-info">
+          <strong> No recipes found </strong>
+      </div>
+  <% else %>
+    <% @inventories.each do |inventory| %>
+      <div class="card mb-4 w-75 mx-auto">
+        <div class="card-body">
+            <div class="row">
+              <div class="col-md-4 d-flex flex-column align-items-center justify-content-between">
+                <h3 class=""><%= link_to inventory.name, inventory_path(inventory), class: "text-decoration-none text-primary" %></h3>
+                <%= link_to 'Remove', inventory_path(inventory), data: { turbo_method: :delete }, class: 'btn btn-danger' %>
+              </div>
+              <div class="col-md-8">
+                  <p class="card-text"><%= inventory.description %></p>
+              </div>
+            </div>
+          </div>
+        </div>
     <% end %>
-      </li>
-      <li class='list-group-item border-0'><%= link_to 'REMOVE', inventory_path(inventory), data: { turbo_method: :delete } %> </li>
-    </ul>
-    <p class='ps-5 lead'><%= inventory.description %></p>
-  </div>
   <% end %>
 </div>
 
+<div class="mx-auto my-4 text-center">
+  <%= link_to 'Add Inventory', new_inventory_path, class:'btn btn-primary' %>
+</div>
 
