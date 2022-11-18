@@ -30,4 +30,6 @@ Rails.application.routes.draw do
   resources :recipes do
     resources :foods, only: [:new, :create, :destroy]
   end
+
+  resources :shopping_list
 end
