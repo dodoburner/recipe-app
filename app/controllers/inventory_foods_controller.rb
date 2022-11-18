@@ -12,8 +12,8 @@ class InventoryFoodsController < ApplicationController
     inventory_food = InventoryFood.create(inventory_food_params)
     inventory_food.inventory = Inventory.find(params[:inventory_id])
     if inventory_food.save
-      flash[:success] = 'Inventory added successfully'
-      redirect_to inventory_inventory_foods_path
+      flash[:notice] = 'Inventory added successfully'
+      redirect_to inventory_path(params[:inventory_id])
     else
       flash.now[:error] = 'Error: Inventory could not be added'
       redirect_to new_inventory_inventory_foods_path
@@ -22,7 +22,7 @@ class InventoryFoodsController < ApplicationController
 
   def destroy
     InventoryFood.find(params[:id]).destroy
-    redirect_to inventory_inventory_foods_path
+    redirect_to inventory_path
   end
 
   private

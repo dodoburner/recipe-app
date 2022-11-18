@@ -13,9 +13,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   devise_for :users, sign_out_via: [:get, :post]
 
-  root 'inventories#index'
   resources :foods 
-  resources :users, only: [:index]
+  # resources :users, only: [:index]
   resources :recipes, only: [:index, :new, :show, :destroy, :create] do
     resources :recipe_foods
   end
@@ -25,7 +24,7 @@ Rails.application.routes.draw do
   # resources :users
   #   resources :inventories
   # end
-  root 'users#index'
+  root 'recipes#index'
   get '/public_recipes', to: 'recipes#public'
 
   resources :recipes do
