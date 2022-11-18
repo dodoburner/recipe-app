@@ -1,12 +1,16 @@
-<h1>Create a new recipe</h1>
-<div class="recipe-form-container">
-    <%= bootstrap_form_with model: @recipe do |form| %>
-        <%= form.alert_message "Please fix the errors below." %>
-        <%= form.text_field :name, required: true %> 
-        <%= form.text_field :preparation_time, required: true %>
-        <%= form.text_field :cooking_time, required: true %>
-        <%= form.text_area :description, required: true %>
-        <%= form.check_box :public, label: "Set as public", checked_value: true, unchecked_value: false %>
-        <%= form.submit "Create recipe" %>
-    <% end %>
+<div class="card w-75 my-4 mx-auto py-3">
+    <h2 class="text-center text-primary py-2"> Create a new recipe</h2>
+    <div class="w-75 mx-auto">
+        <div class="recipe-form-container">
+            <%= bootstrap_form_with model: @recipe do |form| %>
+                <%= form.alert_message "Please fix the errors below." %>
+                <%= form.text_field :name, required: true %> 
+                <%= form.text_field :preparation_time, required: true %>
+                <%= form.text_field :cooking_time, required: true %>
+                <%= form.text_area :description, required: true %>
+                <%= form.check_box :public, label: "Set as public", checked_value: true, unchecked_value: false %>
+                <%= form.submit "Create recipe", class: "btn btn-primary" %>
+            <% end %>
+        </div>
+    </div>
 </div>

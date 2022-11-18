@@ -1,13 +1,25 @@
-<div class='px-5'>
-  <h1>Public Recipes</h1>
+<h1 class="text-center text-primary py-2">Welcome to Recipe App</h1>
+<div class="container text-center">
+  <h2>
+    <i>Recipe app keeps track of all your recipes, ingredients, and inventory. 
+    It will allow you to save ingredients, keep track of what you have, create recipes, 
+    and generate a shopping list based on what you have and what you are missing from a 
+    recipe. Also, since sharing recipes is an important part of cooking the app should 
+    allow you to make them public so anyone can access them.</i>
+  </h2>
+  <h3 class="text-info py-2">To use the app you need to create an account and log in.</h3>
 
+  <p> <%= link_to "Create recipe", new_recipe_path, class: "btn btn-primary" %> - OR - <%= link_to "Create Inventory", new_inventory_path, class: "btn btn-primary" %> </p>
+</div>
+<div class='px-5'>
+  <h2 class="text-center pt-5 text-primary">Public Recipes for some users</h2>
   <div class='container'>
     <% @recipes.each do |recipe| %>
-      <%= link_to recipe_path(recipe), class:'text-reset text-decoration-none' do %>
-       <div class='row my-5 border border-dark border-4 p-3'>
+      <% if recipe.public %>
+        <div class='row my-3 border card border-4 p-3'>
           <div class='col'>
             <h2><%= recipe.name %></h2>
-            <h4>By: <%= recipe.user.email %></h4>
+            <h4>By: <%= recipe.user.name %></h4>
           </div>
 
           <div class='col-8 fs-5'>
@@ -15,6 +27,8 @@
             <p>Total price: $<%= recipe.count_total_price %></p>
           </div>
         </div>
+      <% else %>
+        <h2 class="text-center text-info">No public recipes yet</h2>
       <% end %>
     <% end %>
   </div>

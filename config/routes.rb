@@ -24,10 +24,11 @@ Rails.application.routes.draw do
   # resources :users
   #   resources :inventories
   # end
-  root 'recipes#index'
+  root 'recipes#public'
   get '/public_recipes', to: 'recipes#public'
 
   resources :recipes do
+    resources :shopping_lists
     resources :foods, only: [:new, :create, :destroy]
   end
 end
