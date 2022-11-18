@@ -2,7 +2,7 @@
 
 <div>
   <p>Amount of food to buy: <%= @missing_foods.length %></p>
-  <p>Total value of food needed: </p>
+  <p>Total value of food needed: $<%= @total_value %></p>
 </div>
 
 <div>
@@ -22,9 +22,9 @@
   <tbody class='table-group-divider'>
     <% @missing_foods.each do |mf| %>
       <tr>
-        <td><%= mf.food.name %></td>
-        <td><%= mf.quantity %> <%= mf.food.measurement_unit %></td>
-        <td>$<%= mf.food.price %></td>
+        <td><%= mf[:name] %></td>
+        <td><%= mf[:quantity] %> <%= mf[:measurement_unit] %></td>
+        <td>$<%= mf[:price] %></td>
       </tr>
     <% end %>
   </tbody>
