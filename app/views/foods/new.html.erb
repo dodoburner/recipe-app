@@ -1,9 +1,14 @@
-<div class='d-flex justify-content-center align-items-center'>
-  <%= bootstrap_form_with(model: [@recipe, @food]) do |f| %>
-    <%= f.text_field :name %>
-    <%= f.select :measurement_unit, [["grams"], ["kilos"], ["liters"], ["milliliters"]] %>
-    <%= f.number_field :price, label: 'Price $' %>
-    <%= f.number_field :quantity %>
-    <%= f.submit "Add Food" %>
-  <% end %>
+<div class="card w-75 my-4 mx-auto py-3">
+    <h2 class="text-center text-primary py-2"> Add Food</h2>
+    <div class="w-75 mx-auto">
+        <div class="recipe-form-container">
+          <%= bootstrap_form_with(model: [@recipe, @food]) do |f| %>
+            <%= f.text_field :name %>
+            <%= f.select :measurement_unit, [["grams"], ["kilos"], ["liters"], ["milliliters"]] %>
+            <%= f.number_field :price, label: 'Price $' %>
+            <%= f.number_field :quantity %>
+            <%= f.submit "Add Food", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
 </div>

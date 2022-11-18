@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RecipeApp</title>
+    <title>Recipe App</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,7 +12,9 @@
   </head>
 
   <body>
+  <% if notice %>
     <p class="notice"><%= notice %></p>
+  <% end %>
     <% if alert %>
       <div class="w-75 mx-auto alert alert-warning text-warning" role="alert">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
@@ -21,6 +23,42 @@
         <%= alert %>
       </div>
     <% end %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+  <div class="container-fluid">
+    <a class="navbar-brand fs-3" href="#">Recipe App</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav fs-5">
+        <li class="nav-item">
+          <%= link_to 'Public Recipes', public_recipes_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'My Recipes', recipes_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Inventories', inventories_path, class: 'nav-link' %>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto fs-5">
+        <% #  if user is signed in, show sign out link %>
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Welcome <%= current_user.name %></a>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link btn btn-primary' %>
+          </li>
+        <% # if user is not signed in, show sign in link %>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to 'Sign In', new_user_session_path, class: 'nav-link btn btn-primary' %>
+          </li>
+        <% end %>
+    </div>
+  </div>
+</nav>
     <%= yield %>
   </body>
 </html>

@@ -1,17 +1,11 @@
-<h1>New inventoryFood</h1>
-
-<%= form_for @inventory_food, url: inventory_inventory_foods_path, method: :post   do |form| %>
-    <div>
-    <%= form.label :quantity %>
-    <%= form.number_field :quantity %>
-      <%= form.label :food_id %>
-      <%= form.select :food_id, @foods.map { |food| [food.name, food.id] } %>
-
-    </div>
-  <%= form.submit "Add Food" %>
-<br>
+<h1 class="text-center text-primary py-2">New inventoryFood</h1>
+<div class="w-75 mx-auto">
+<%= bootstrap_form_for @inventory_food, url: inventory_inventory_foods_path, method: :post   do |form| %>
+  <%= form.number_field :quantity %>
+  <%= form.select :food_id, @foods.map { |food| [food.name, food.id] } %>
+  <div class="d-flex justify-content-between">
+    <%= form.submit "Add Food", class: "btn btn-primary" %>
+    <%= link_to "Back to inventories", inventories_path, class: "btn btn-info" %>
+  </div>
 <%end%>
-
-<div>
-  <%= link_to "Back to inventories", inventories_path %>
 </div>

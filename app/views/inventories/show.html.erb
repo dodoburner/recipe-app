@@ -27,7 +27,7 @@
   </table>
 </div>
 
-<div class="foot">
-  <%= link_to "Back to inventories", inventories_path %>
-  <%= button_to "Delete this inventory", @inventory, method: :delete %>
+<div class="w-75 mx-auto d-flex justify-content-between my-3">
+    <%= link_to "Back to inventories", inventories_path, class: "btn btn-info" %>
+    <%= button_to "Delete this inventory", @inventory, method: :delete, class: "btn btn-danger" %>
 </div>

@@ -1,11 +1,13 @@
-
-<%= form_with model: @inventory do |f| %>
-    <%= f.label :name %>
+<div class="card w-75 my-4 mx-auto py-3">
+<h2 class="text-center text-primary py-2"> Add Inventory </h2>
+<div class="w-75 mx-auto">
+<%= bootstrap_form_with model: @inventory do |f| %>
     <%= f.text_field :name %><br><br>
 
-    <%= f.label :description %>
     <%= f.text_area :description %><br>
-    <%= f.submit "Add Inventory" %>
+    <%= f.submit "Add Inventory", class: "btn btn-primary" %>
 <% end %>
+</div>
+</div>
 
 
