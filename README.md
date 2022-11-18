@@ -88,6 +88,12 @@ rails server
 - Twitter: [@DorianUrem](https://twitter.com/DorianUrem)
 - LinkedIn: [Dorian Urem](https://www.linkedin.com/in/dorian-urem-252baa237/)
 
+👤 **Collins Musoko**
+
+- GitHub: [@Github](https://github.com/Carshy)
+- Twitter: [@Twitter](https://twitter.com/CarshyCollins)
+- Linkedin: [Linkedin](https://www.linkedin.com/in/collins-musoko-864881120/)
+
 
 ## 🤝 Contributing
 
