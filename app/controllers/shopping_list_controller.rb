@@ -1,5 +1,7 @@
 class ShoppingListController < ApplicationController
   def index
+    @inventory = Inventory.find(params[:inventories])
+    @recipe = Recipe.find(params[:recipe])
   end
 
   def new
