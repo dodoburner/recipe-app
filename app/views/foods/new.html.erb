@@ -6,7 +6,6 @@
             <%= f.text_field :name %>
             <%= f.select :measurement_unit, [["grams"], ["kilos"], ["liters"], ["milliliters"]] %>
             <%= f.number_field :price, label: 'Price $' %>
-            <%= f.number_field :quantity %>
             <%= f.submit "Add Food", class: "btn btn-primary" %>
           <% end %>
         </div>

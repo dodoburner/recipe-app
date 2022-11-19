@@ -17,15 +17,17 @@
     <% @recipes.each do |recipe| %>
       <% if recipe.public %>
         <div class='row my-3 border card border-4 p-3'>
-          <div class='col'>
-            <h2><%= recipe.name %></h2>
-            <h4>By: <%= recipe.user.name %></h4>
-          </div>
+          <%= link_to recipe_path(recipe ) do %>
+            <div class='col'>
+              <h2><%= recipe.name %></h2>
+              <h4>By: <%= recipe.user.name %></h4>
+            </div>
 
-          <div class='col-8 fs-5'>
-            <p>Total food items: <%= recipe.count_total_food_items %></p>
-            <p>Total price: $<%= recipe.count_total_price %></p>
-          </div>
+            <div class='col-8 fs-5'>
+              <p>Total food items: <%= recipe.count_total_food_items %></p>
+              <p>Total price: $<%= recipe.count_total_price %></p>
+            </div>
+          <% end %>
         </div>
       <% else %>
         <h2 class="text-center text-info">No public recipes yet</h2>

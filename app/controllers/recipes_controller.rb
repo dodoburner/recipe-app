@@ -28,6 +28,7 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @recipe_foods = @recipe.recipe_foods
+    @inventories = User.find(current_user.id).inventories
   end
 
   def destroy
@@ -39,6 +40,13 @@ class RecipesController < ApplicationController
 
   def public
     @recipes = Recipe.where(public: true).order('created_at DESC')
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+    @public = @recipe.public ? false : true
+    Recipe.update(@recipe.id, public: @public)
+    redirect_to recipe_path
   end
 
   private
