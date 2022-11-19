@@ -10,12 +10,16 @@
               <p class="my-3"> Steps to follow: <%= @recipe.description %></p>
           </div>
           <div class="col-md-4">
+            <% if @recipe.user_id == current_user.id %>
               <div class="form-check form-switch fs-3">
-                  <label class="form-check-label" for="flexSwitchCheckChecked">Public</label>
+                <label class="form-check-label" for="flexSwitchCheckChecked">Public</label>
+                <%= link_to recipe_path(@recipe), method: :patch do %>
                   <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" <%= @recipe.public ? 'checked' : '' %>>
+                <% end %>
+                </div>
               </div>
-            </div>
-      </div>
+            <% end %>
+           </div>
       <% if @recipe.user_id == current_user.id %>
         <div class="d-flex justify-content-between">
           <button type="button" class="btn btn-primary">

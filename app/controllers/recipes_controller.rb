@@ -42,6 +42,13 @@ class RecipesController < ApplicationController
     @recipes = Recipe.where(public: true).order('created_at DESC')
   end
 
+  def update
+    @recipe = Recipe.find(params[:id])
+    @public = @recipe.public ? false : true
+    Recipe.update(@recipe.id, public: @public)
+    redirect_to recipe_path
+  end
+
   private
 
   def recipe_params
