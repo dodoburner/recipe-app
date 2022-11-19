@@ -24,7 +24,6 @@ class RecipeFoodsController < ApplicationController
     redirect_to recipe_path
   end
 
-
   private
 
   def recipe_food_params
