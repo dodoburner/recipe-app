@@ -14,8 +14,8 @@
 <div class='px-5'>
   <h2 class="text-center pt-5 text-primary">Public Recipes for some users</h2>
   <div class='container'>
+  <% if @recipes.length > 0 %>
     <% @recipes.each do |recipe| %>
-      <% if recipe.public %>
         <div class='row my-3 border card border-4 p-3'>
           <%= link_to recipe_path(recipe ) do %>
             <div class='col'>
@@ -29,9 +29,9 @@
             </div>
           <% end %>
         </div>
-      <% else %>
-        <h2 class="text-center text-info">No public recipes yet</h2>
-      <% end %>
     <% end %>
+  <% else %>
+  <h2 class="text-center card py-2 text-info">No public recipes yet</h2>
+<% end %>
   </div>
 </div>
