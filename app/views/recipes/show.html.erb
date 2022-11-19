@@ -7,7 +7,7 @@
                   <li class="list-group-item"><b>Preparation time:</b> <%= @recipe.preparation_time %></li>
                   <li class="list-group-item"><b>Cooking time:</b> <%= @recipe.cooking_time %></li>
               </ul>
-              <p class="my-3"> Steps to follow: </p>
+              <p class="my-3"> Steps to follow: <%= @recipe.description %></p>
           </div>
           <div class="col-md-4">
               <div class="form-check form-switch fs-3">
@@ -16,14 +16,17 @@
               </div>
             </div>
       </div>
-      <div class="d-flex justify-content-between">
+      <% if @recipe.user_id == current_user.id %>
+        <div class="d-flex justify-content-between">
           <button type="button" class="btn btn-primary">
             <%= link_to 'Generate Shopping List', new_shopping_list_path(recipe: @recipe.id),  {remote: true, 'data-bs-toggle' =>  "modal", 'data-bs-target' => '#modal-window'}  %>
           </button>
           <button type="button" class="btn btn-primary">
               <%= link_to 'Add ingredient', new_recipe_recipe_food_path(@recipe) %>
           </button>
-      </div>
+        </div>
+      <% end %>
+
       <hr>
     <%= link_to 'Back', public_recipes_path, class: 'btn btn-info mx-auto' %>
 
@@ -44,7 +47,9 @@
               <td><%= rf.food.name %></td>
               <td><%= rf.quantity %> <%= rf.food.measurement_unit %></td>
               <td>$<%= rf.food.price %></td>
-              <td><%= link_to 'Delete', recipe_recipe_food_path(@recipe, rf), data: { turbo_method: :delete } %> </td>
+              <% if @recipe.user_id == current_user.id %>
+                <td><%= link_to 'Delete', recipe_recipe_food_path(@recipe, rf), data: { turbo_method: :delete } %> </td>
+              <% end %>
             </tr>
           <% end %>
         </tbody>
