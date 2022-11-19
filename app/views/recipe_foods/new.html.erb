@@ -1,0 +1,11 @@
+<h1 class="text-center text-primary py-2">New Recipe Food</h1>
+<div class="w-75 mx-auto">
+<%= bootstrap_form_with(model: [@recipe, @recipe_food])  do |form| %>
+  <%= form.number_field :quantity %>
+  <%= form.select :food_id, @foods.map { |food| [food.name, food.id] } %>
+  <div class="d-flex justify-content-between">
+    <%= form.submit "Add Food", class: "btn btn-primary" %>
+    <%= link_to "Back to recipes", recipes_path, class: "btn btn-info" %>
+  </div>
+<%end%>
+</div>
