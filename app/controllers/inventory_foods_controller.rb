@@ -1,8 +1,4 @@
 class InventoryFoodsController < ApplicationController
-  # def index
-  #   @inventoryFoods = InventoryFood.all
-  # end
-
   def new
     @inventory_food = InventoryFood.new
     @foods = Food.all
